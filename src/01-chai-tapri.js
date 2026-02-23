@@ -28,4 +28,20 @@
  */
 export function chaiTapriRevenue(customers) {
   // Your code here
+
+  if (typeof customers !== "number" || customers <= 0 || !Number.isInteger(customers)) {
+    return { totalChai: 0, totalRevenue: 0 }
+  }
+
+  const specialGingerChaiCustomer = parseInt(customers / 3)
+  const cuttingChaiCustomers = customers - specialGingerChaiCustomer
+
+  const totalRevenue = cuttingChaiCustomers * 10 + specialGingerChaiCustomer * 15
+
+  const totalChai = customers
+
+  return {
+    totalChai,
+    totalRevenue
+  }
 }
