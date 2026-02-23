@@ -54,11 +54,8 @@ export function calculateAutoFare(distance, waitingMinutes = 0) {
 
   let waitingFare = 0;
 
-  if (waitingMinutes % 2 === 1) {
-    waitingMinutes += 1
-  }
-
-  waitingFare += (waitingMinutes * 2.5)
+  const waitingTime = Math.ceil(waitingMinutes / 2)
+  waitingFare += (waitingTime * 5)
 
 
   return fare + waitingFare
