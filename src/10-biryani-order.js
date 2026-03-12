@@ -35,4 +35,43 @@
  */
 export function biryaniBatchProcessor(orders) {
   // Your code here
+
+  if (!Array.isArray(orders) || orders.length === 0) {
+    return { totalBatches: 0, totalPlates: 0, ordersProcessed: 0 }
+  }
+
+  let totalBatches = 0
+  let totalPlates = 0
+  let ordersProcessed = 0
+  let i = 0
+
+  do {
+
+    if (typeof orders[i] !== "number" || orders[i] <= 0 || !Number.isInteger(orders[i]) || orders[i] === null) {
+      i++
+      continue
+    }
+
+    if (orders[i] <= 5) {
+      totalBatches += 1
+      totalPlates += orders[i]
+      ordersProcessed++
+    } else {
+      totalBatches += Math.ceil(orders[i] / 5)
+      totalPlates += orders[i]
+      ordersProcessed++
+    }
+
+    i++
+
+  } while (i < orders.length);
+
+
+  return {
+    totalBatches,
+    totalPlates,
+    ordersProcessed
+  }
 }
+
+
